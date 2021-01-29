@@ -13,7 +13,7 @@ var updateCallback = function(data){
     console.log("after movieName");
     console.log("moviename : "+movieName);
     if (line.source.toLowerCase()==="visitor"){
-        var url = "https://www.omdbapi.com?t="+movieName+"&apikey=3e626416";
+        var url = "https://www.omdbapi.com?t="+movieName+"&apikey=2fe69b04";
         fetch(url)
                 .then(function(response){
                     
