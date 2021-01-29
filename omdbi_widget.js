@@ -4,16 +4,11 @@ chatText = "chatTranscript.lines";
 console.log(chatText);
 
 var updateCallback = function(data){
-    var value = data.newValue;
-    console.log("after value ");
-    console.log("value : "+value);
-    var line = value[value.length -1];
-    console.log("line : "+line);
-    var movieName = line.text;
-    console.log("after movieName");
-    console.log("moviename : "+movieName);
+    value = data.newValue;
+    line = value[value.length -1];
+    movieName = line.text;
     if (line.source.toLowerCase()==="visitor"){
-        var url = "https://www.omdbapi.com?t="+movieName+"&apikey=2fe69b04";
+        url = "https://www.omdbapi.com?t="+movieName+"&apikey=2fe69b04";
         fetch(url)
                 .then(function(response){
                     
@@ -24,11 +19,8 @@ var updateCallback = function(data){
                     document.getElementById("Year").innerHTML = res.Year;
                     document.getElementById("Rated").innerHTML = res.Rated;
                     document.getElementById("Actors").innerHTML = res.Actors;
-                    document.getElementById("Genre").innerHTML = res.Genre;
-                    document.getElementById("Plot").innerHTML = res.Plot;
 
                 }).catch(function(error){
-                    console.log("I am inside catch");
                     console.log("Error Message : "+error);
                 })
     }
@@ -36,10 +28,10 @@ var updateCallback = function(data){
 
 var notifyWhenDone = function(error) {
     if (err){
-        console.log("I am inside notifyWhenDone function : "+err);
+        console.log("inside notifyWhenDone function : "+err);
     }
     var chatText = "chatTranscript.lines";
-    errorMessage.innerHTML = "Unable to find the movie";
+    errorMessage.innerHTML = "Unable to return a movie";
 };
 
 lpTag.agentSDK.init({});
